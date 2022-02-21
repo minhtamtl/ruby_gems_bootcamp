@@ -1,8 +1,22 @@
+
 %h1
   Courses:
   = @courses.count
-
-.card-columns
-  - @courses.each do |course|
-    = render 'courses/course', course: course
-%br
+= link_to 'New Course', new_course_path
+.card.text-center
+- @courses.each do |course|
+  .card-header
+    .fa.fa-book
+    = link_to course.title, course_path(course)
+  .card-body
+    = course.description
+    .far.fa-clock
+    = course.created_at.strftime('%d-%b-%Y')
+    .row
+    .fa.fa-chalkboard-teacher
+    = course.user
+  .card-footer
+    = link_to 'Show', course, class: 'btn btn-sm btn-primary'
+    = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
+    = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+  
