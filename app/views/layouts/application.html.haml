@@ -1,9 +1,8 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta(charset="utf-8")/
+    %meta(content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport")/
     %title Rubygems
     = csrf_meta_tags
     = csp_meta_tag
@@ -12,6 +11,6 @@
   %body
     = render 'layouts/header'
     = render 'layouts/message'
-    .container-f
-      %p
+    .container-fluid
+    
     = yield
