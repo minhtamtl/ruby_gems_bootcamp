@@ -61,3 +61,5 @@ gem "haml-rails", "~> 2.0"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'devise'
 gem 'friendly_id', '~> 5.4.0'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'public_activity', '~> 1.6.4'

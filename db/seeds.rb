@@ -10,9 +10,12 @@ User.create!(email: 'admin@example.com', password: 'admin@example.com', password
 40.times do
     Course.create!([{
         title:Faker::Educator.course_name,
-
         description: Faker::Movies::HarryPotter.quote,
-        user_id: User.first.id
+        user_id: User.first.id,
+        short_description: Faker::Quote.famous_last_words,
+        language: Faker::ProgrammingLanguage.name,
+        level: "Advanced",
+        price: Faker::Number.between(13,199)
 
     }])
 end

@@ -1,22 +1,30 @@
+%h2
+  .text-center
+    Courses
+    .badge.badge-info
+      = @courses.count
+%p
+.row
+  .col-md-2
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+      = f.label :title
+      = f.search_field :title_cont, placeholder: "Title", class: "form-control form-control-sm"
+      = f.label :description
+      = f.search_field :short_description_cont, placeholder: "Description", class: "form-control form-control-sm"
+      = f.label :language
+      = f.select :language_cont, Course.languages, include_blank: true
+      = f.label :Level
+      = f.select :level_cont, Course.levels, include_blank: true
+      = f.label :Price
+      = f.search_field :price_eq, placeholder: "Price", class: "form-control form-control-sm"
+      = f.label :Teacher
+      = f.search_field :user_email_cont, placeholder: "Email", class: "form-control form-control-sm"
+      = f.submit
+      .ml-2
+        = link_to courses_path class: 'btn btn-secondary' do
+          .fa.fa-sync
+  .col-md-10
+    .card-columns
+      - @courses.each do |course|
+        = render'courses/course', course: course
 
-%h1
-  Courses:
-  = @courses.count
-= link_to 'New Course', new_course_path
-.card.text-center
-- @courses.each do |course|
-  .card-header
-    .fa.fa-book
-    = link_to course.title, course_path(course)
-  .card-body
-    = course.description
-    .far.fa-clock
-    = course.created_at.strftime('%d-%b-%Y')
-    .row
-    .fa.fa-chalkboard-teacher
-    = course.user
-  .card-footer
-    = link_to 'Show', course, class: 'btn btn-sm btn-primary'
-    = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
-    = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
-  
